@@ -1,15 +1,11 @@
-import {ITile} from "../../types/tile";
+import {ITile} from "../types/tile";
 import React from 'react';
-import styles from 'style.css'
 
 interface IProps {
     tile: ITile,
-    classname?: string
 }
 
-const Tile: React.FC<IProps> = ({tile, classname = ''}) => {
-
-
+const Tile: React.FC<IProps> = ({tile}) => {
     const typeDateSection = (
         <div>
             <p>{tile.type} {tile.date}</p>
@@ -18,16 +14,17 @@ const Tile: React.FC<IProps> = ({tile, classname = ''}) => {
 
     const authorTitleSection = (
         <div>
-            <p>{tile.author}</p>
-            <p>{tile.title}</p>
+            <p className='author'>{tile.author}</p>
+            <p className='title'>{tile.title}</p>
         </div>
     )
 
     return (
-        <div className={styles.tile}>
-            <img src={tile.image} title={tile.title} alt={tile["image-alt"]}>
+        <div className='tile'>
+            <div className='tile-container'>
+                <img src={tile.image} title={tile.title} alt={tile["image-alt"]}/>
                 {typeDateSection}
-            </img>
+            </div>
             {authorTitleSection}
         </div>
     )
